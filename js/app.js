@@ -13,7 +13,6 @@
  * 
 */
 
-
 /**
  * Comments should be present at the beginning of each procedure and class.
  * Great to have comments before crucial code sections within the procedure.
@@ -24,7 +23,6 @@
  * 
 */
 const navigation_Bar = document.getElementById('navbar__list');
-// sections global var
 const sections = document.querySelectorAll('section');
 
 /**
@@ -43,82 +41,35 @@ const sections = document.querySelectorAll('section');
 
 // build the nav
 
-const Generate_navBar = () => {
-
-    let ShowNavBar = '';
-    // looping over all sections
-    sections.forEach(section => {
-
-        const sectionID = section.id;
-        const sectionDataNavBar = section.dataset.nav;
-
-        ShowNavBar  += `<li><a class="menu__link" href="#${sectionID}"> ${sectionDataNavBar}</a></li>`;
-
-    });
-    // append all elements to the navigation
-    navigation_Bar.innerHTML = ShowNavBar ;
-};
-
-Generate_navBar();
+let section_item ='' 
+for( let i = 0; i <sections.length; i++)
+{ 
+    section_item += `<li><a class="menu__link" href="#${sections[i].id}"> ${sections[i].dataset.nav}</a></li>`;
+}
+navigation_Bar.innerHTML = section_item;
 
 
-// Add class 'active' to section when near top of viewport 
+// Add class 'active' to section when near top of viewport
 
-const offset_clear = (section) => {
-    return Math.floor(section.getBoundingClientRect().top);
-};
-
-// remove the active class
-const removeActive_State = (section) => {
-    section.classList.remove('your-active-class');
-    section.style.cssText = "background-color: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%)";
-};
-// add the active class
-const addActive_State = (conditional, section) => {
-    if(conditional){
-        section.classList.add('your-active-class');
-        section.style.cssText = "background-color: rgb(43, 160, 160)";
-
-    };
-};
-
-//implementating the actual function
-
-const sectionActive = () => {
-    sections.forEach(section => {
-        const elementOffset = offset_clear(section);
-
-        inviewport = () => elementOffset < 130 
-        && elementOffset >= -130;
-
-        removeActive_State(section);
-        addActive_State(inviewport(),section);
-    });
-};
-
-window.addEventListener('scroll' ,sectionActive);
-//implementating the actual function for 
+window.addEventListener('scroll' ,() =>{
+    for ( let i =0 ; i < sections.length ; i++)
+    {   
+        const sectionTopOffset = sections[i].getBoundingClientRect().top;
+        sections[i].classList.remove('your-active-class');
 
 
+        if ( sectionTopOffset >= -130 && sectionTopOffset <130)
+        { 
+      
+            sections[i].classList.add('your-active-class');
+      
+          ///  sections[i].style.cssText = "background-color: rgb(43, 160, 160)";
+        }
 
-// Scroll to anchor ID using scrollTO event ,and smoothy scroll by clicking the navagition menu
-var LinksOf_NavBar = document.querySelectorAll("nav a");
-
-LinksOf_NavBar.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    var currentId = e.target.attributes.href.value;
-    var section = document.querySelector(currentId);
-    var sectionPosition = section.offsetTop;
-    
-    window.scroll({
-      top: sectionPosition,
-      behavior: "smooth",
-    });
-    
-  });
+        
+    }
 });
-    
+
 
 // Scroll to anchor ID using scrollTO event
 
@@ -129,10 +80,25 @@ LinksOf_NavBar.forEach((link) => {
  * 
 */
 
-// Build menu 
-
 // Scroll to section on link click
 
+const onLinkClick = (event) =>{
+    event.preventDefault()
+    var sectionId =  event.target.attributes.href.value;
+    var section = document.querySelector(sectionId);
+    var sectionPosition = section.offsetTop;
+    window.scroll({
+        top: sectionPosition,
+        behavior: "smooth",
+      });
+
+
+}
+// Build menu 
+var navbar_links = document.querySelectorAll("nav a");
+for ( let i = 0 ; i< navbar_links.length;i++)
+{   
+    navbar_links[i].addEventListener("click", onLinkClick )
+}
+
 // Set sections as active
-
-

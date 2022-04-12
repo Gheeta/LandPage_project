@@ -1,13 +1,12 @@
 # Landing Page Project
 
-NOTES OF MY CODE PROJECT
-
-\*i add 3 sections of content that became 6 sections.
-
-\*make function with name (Generate_navBar) to put link and section name in and join it with all sections when click on it go to the target section.
-
-\*make function that focus on active section when press or view on me that can change color.
-make function that make smooth speed when transfer from section to another.
+### NOTES OF MY CODE PROJECT
+- I have 6 sections in the HTMl file. 
+- I have added the javascript file in the HTML file.
+- I have added the js code section to add the list of sections names to the navagation bar.
+- I have added the js code section to active the section on the viewport.
+- I have added the js code section to navagate smoothly to the target section when clicking on any navagation link.
+- I checked the responsive landing  and it is responsive with devices with different dimensions.
 
 ## Table of Contents
 
