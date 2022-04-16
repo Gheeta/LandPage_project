@@ -26,12 +26,7 @@ h1 {
     margin: 2em 1rem;
 }
 
-@media only screen and (min-width: 35em){
-    h1 {
-        font-size: 7em;
-        margin: 2em 4rem 1em;
-    }
-}
+
 
 h2 {
     border-bottom: 1px solid #cc1;
@@ -64,6 +59,9 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
+
+
+
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
@@ -72,6 +70,15 @@ section {
 
 .navbar__menu li {
     display: inline-block;
+}
+
+.navbar__menu .list_highLight{
+    display: block;
+    padding: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
 }
 
 .navbar__menu .menu__link {
@@ -220,4 +227,41 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+
+/* tablet*/
+@media only screen and (max-width: 712px){
+    .navbar__menu ul {
+        text-align: center;
+    }
+    .navbar__menu .list_highLight{
+        font-size: .6em;
+    }
+    .navbar__menu .menu__link {
+        font-size: .6em;
+    }
+    h2 {
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+}
+/*phone */
+@media only screen and (max-width: 320px){
+    .navbar__menu ul {
+        text-align: center;
+    }
+    .navbar__menu .list_highLight{
+        font-size: .6em;
+    }
+    .navbar__menu .menu__link {
+        font-size: .6em;
+    }
+    h2 {
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
 }

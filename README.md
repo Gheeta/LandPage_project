@@ -10,7 +10,7 @@
 
 ## Table of Contents
 
-- [Instructions](#instructions)
+- [Instructions]
 
 ## Instructions
 

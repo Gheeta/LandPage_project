@@ -44,25 +44,31 @@ const sections = document.querySelectorAll('section');
 let section_item ='' 
 for( let i = 0; i <sections.length; i++)
 { 
-    section_item += `<li><a class="menu__link" href="#${sections[i].id}"> ${sections[i].dataset.nav}</a></li>`;
+    section_item += `<li id="${sections[i].id}-item"><a class="menu__link" href="#${sections[i].id}"> ${sections[i].dataset.nav}</a></li>`;
 }
 navigation_Bar.innerHTML = section_item;
 
 
 // Add class 'active' to section when near top of viewport
 
-window.addEventListener('scroll' ,() =>{
+const navbar_links = document.querySelectorAll("nav a");
+window.addEventListener('scroll' ,() =>{ 
     for ( let i =0 ; i < sections.length ; i++)
     {   
+        //console.log(navbar_listss);
         const sectionTopOffset = sections[i].getBoundingClientRect().top;
         sections[i].classList.remove('your-active-class');
+        navbar_links[i].classList.remove('list_highLight');
+        navbar_links[i].classList.add('menu__link');
+
 
 
         if ( sectionTopOffset >= -130 && sectionTopOffset <130)
         { 
       
             sections[i].classList.add('your-active-class');
-      
+            navbar_links[i].classList.add('list_highLight');
+            navbar_links[i].classList.remove('menu__link');
           ///  sections[i].style.cssText = "background-color: rgb(43, 160, 160)";
         }
 
@@ -82,11 +88,11 @@ window.addEventListener('scroll' ,() =>{
 
 // Scroll to section on link click
 
-const onLinkClick = (event) =>{
+ onLinkClick = (event) =>{
     event.preventDefault()
-    var sectionId =  event.target.attributes.href.value;
-    var section = document.querySelector(sectionId);
-    var sectionPosition = section.offsetTop;
+    let sectionId =  event.target.attributes.href.value;
+    let section = document.querySelector(sectionId);
+    let sectionPosition = section.offsetTop;
     window.scroll({
         top: sectionPosition,
         behavior: "smooth",
@@ -95,8 +101,8 @@ const onLinkClick = (event) =>{
 
 }
 // Build menu 
-var navbar_links = document.querySelectorAll("nav a");
-for ( let i = 0 ; i< navbar_links.length;i++)
+
+for ( let i = 0 ; i< navbar_links.length; i++)
 {   
     navbar_links[i].addEventListener("click", onLinkClick )
 }
